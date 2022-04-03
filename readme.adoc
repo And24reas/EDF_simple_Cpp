@@ -8,18 +8,19 @@
 6. if any of deadlines is 0 after decrement add to it its period and set its valid bit to 1
 7. return to step 2
 
-__Durchführende Gruppe:__
-__Anwendung von Gruppe:__
-
-== Getestetes System
-Welche Aufgabe/Problemstellung löst die Anwendung.
 
 == Fehler-Report
 // See http://asciidoctor.org/docs/user-manual/#tables
 [options="header"]
 |===
-|Pfad |Parameter |Beschreibung |Rückgabe
-| … | … | … | … |
+|Step |Task1 |Task2 |Task3
+|1 | … | … | … |
+|2 | … | … | … |
+|3 | … | … | … |
+|4 | … | … | … |
+|5 | … | … | … |
+|6 | … | … | … |
+|7 | … | … | … |
 |===
 
 == Sonstiges

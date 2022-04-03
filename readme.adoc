@@ -13,12 +13,12 @@
 // See http://asciidoctor.org/docs/user-manual/#tables
 [options="header"]
 |===
-|Step |Task1 |Task2 |Task3|
-|1 | 3 valid:1 | 12 valid:1 | 4 valid:1 |
-|2 | 3* valid:1 |12 valid:1 | 4 valid:1 |
-|3 | 2 valid:1 | 11 valid:1 | 3 valid:1 |
-|4 + 5 | 2 valid:0 | 11 valid:1 | 2 valid:1|
-|6 + 7 | 2 valid:0 | 11 valid:1 | 2 valid:1|
+|Step |Task1 |Task2 |Task3|earliest
+|1 | 3 valid:1 | 12 valid:1 | 4 valid:1 |-
+|2 | 3* valid:1 |12 valid:1 | 4 valid:1 |3
+|3 | 2 valid:1 | 11 valid:1 | 3 valid:1 |3
+|4 + 5 | 2 valid:0 | 11 valid:1 | 2 valid:1|3
+|6 + 7 | 2 valid:0 | 11 valid:1 | 2 valid:1|3
 |-|-|-|-|
 |1 | 3 valid:1 | 12 valid:1 | 4 valid:1 |
 |2 | 3* valid:1 |12 valid:1 | 4 valid:1 |

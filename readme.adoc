@@ -1,0 +1,30 @@
+= Recipe
+1. get deadlines => deadlines[T_1, T_2, T_3]
+2. fine earliest deadline => earliest (task with earliest deadine)
+3. i) Decrement deadlines by 1 => [T_1-1, T_2-1, T_3-1]
+  ii) increment bytes_sent of earliest
+ iii) if bytes_sent is equal to earliest_length => set valid bit of earliest to 0
+  iv) if any of deadlines is 0 after decrement add to it its period and set its valid bit to 1
+  v) return to step 2
+
+__Durchführende Gruppe:__
+__Anwendung von Gruppe:__
+
+== Getestetes System
+Welche Aufgabe/Problemstellung löst die Anwendung.
+
+== Fehler-Report
+// See http://asciidoctor.org/docs/user-manual/#tables
+[options="header"]
+|===
+|Pfad |Parameter |Beschreibung |Rückgabe
+| … | … | … | … |
+|===
+
+== Sonstiges
+* Optik der Anwendung
+* Fehlende Features
+* Interaktion mit der Anwendung (Usability)
+
+== Verbesserungsvorschläge
+* Was kann noch weiter verbessert werden?

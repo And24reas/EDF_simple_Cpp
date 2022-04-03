@@ -23,10 +23,3 @@
 |7 | … | … | … |
 |===
 
-== Sonstiges
-* Optik der Anwendung
-* Fehlende Features
-* Interaktion mit der Anwendung (Usability)
-
-== Verbesserungsvorschläge
-* Was kann noch weiter verbessert werden?

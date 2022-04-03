@@ -13,7 +13,7 @@
 // See http://asciidoctor.org/docs/user-manual/#tables
 [options="header"]
 |===
-|Step |Task1 |Task2 |Task3
+|Step |Task1 |Task2 |Task3|
 |1 | … | … | … |
 |2 | … | … | … |
 |3 | … | … | … |

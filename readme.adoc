@@ -1,11 +1,12 @@
 = Recipe
+
 1. get deadlines => deadlines[T_1, T_2, T_3]
 2. fine earliest deadline => earliest (task with earliest deadine)
-3. i) Decrement deadlines by 1 => [T_1-1, T_2-1, T_3-1]
-  ii) increment bytes_sent of earliest
- iii) if bytes_sent is equal to earliest_length => set valid bit of earliest to 0
-  iv) if any of deadlines is 0 after decrement add to it its period and set its valid bit to 1
-  v) return to step 2
+3. Decrement deadlines by 1 => [T_1-1, T_2-1, T_3-1]
+4. increment bytes_sent of earliest
+5. if bytes_sent is equal to earliest_length => set valid bit of earliest to 0
+6. if any of deadlines is 0 after decrement add to it its period and set its valid bit to 1
+7. return to step 2
 
 __Durchführende Gruppe:__
 __Anwendung von Gruppe:__

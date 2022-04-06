@@ -28,8 +28,10 @@ void Task::running() {
 	if (bytes_sent < length) {
 		(bytes_sent)++;
 		std::cout << "\n\nBytes sent: " << bytes_sent;
-	}
-	if (bytes_sent == length) {
+		// Here 'return' or under line as 'else if'.
+		// If 'if(bytes_sent < length)' is true, you don't need to execute the under if-statement 
+		// return 
+	} else if (bytes_sent == length) {
 		bytes_sent = 0;
 		tvalid = false;
 		std::cout << "\nBytes sent. Resetting to bytes_sent to 0 and tvalid to false " << bytes_sent <<"\n";
@@ -48,10 +50,19 @@ int Task::get_bytes_sent() {
 	return this->bytes_sent;
 }
 
+// You use sometimes 'this->' and sometimes not. I recommend that you don't use 'this->', 
+// instead you can write the member variable like this to distinguish: m_tvaild
 bool Task::get_valid() {
 	return tvalid;
 }
 
+// set function normaly give a paramter. i.e. void Task::set_valid(bool enable)
 void Task::set_valid() {
+	tvalid = true;
+}
+
+// It is just my style, I like to write the scope of function like this: 
+void Task::set_valid()
+{
 	tvalid = true;
 }

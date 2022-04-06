@@ -22,6 +22,8 @@ int main() {
 	
 	std::cout << std::endl;
 	 
+	// make this as a function in EDF_Scheduler. And execute just like this:
+	// edf.run();
 	for (int i = 0; i < lcm; i++) {
 		to_assign = edf.find_earliest(lcm);		
 		to_print=edf.assign_Task(to_assign);
@@ -42,21 +44,13 @@ int main() {
 }
 
 int calc_lcm(int a, int b) {
-	int greater = 0;
 	int lcm = 0;
-	if (a > b) {
-		greater = a;
+	bool greater_flag = a > b;
+	lcm = a * greater_flag + b * !greater_flag;
+
+	while (lcm % a || lcm % b) {
+		lcm += 1;
 	}
-	else {
-		greater = b;
-	}
-	while (true) {
-		if ((greater % a == 0) && (greater % b == 0)) {
-			lcm = greater;
-			break;
-			greater += 1;
-		}
-			
-	}
+
 	return lcm;
 }

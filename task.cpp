@@ -1,68 +1,67 @@
 #include "Task.h"
 
-Task::Task(unsigned int length, unsigned int period) {
-	this->period = period;
-	this->length = length;
-	this->bytes_sent = 0;
-	this->tlast = false;
-	this->tready = false;
-	this->tvalid = true;
+Task::Task(unsigned int length, unsigned int period) 
+{
+	m_period = period;
+	m_execution_time = length;
+	m_bytes_sent = 0;
+	m_tlast = false;
+	m_tready = false;
+	m_tvalid = true;
 }
-Task::Task() {
-	this->period = 0;
-	this->length = 0;
-	this->bytes_sent = 0;
-	this->tlast = false;
-	this->tready = false;
-	this->tvalid = true;
+Task::Task() 
+{
+	m_period = 0;
+	m_execution_time = 0;
+	m_bytes_sent = 0;
+	m_tlast = false;
+	m_tready = false;
+	m_tvalid = true;
 }
-Task::~Task() {
+Task::~Task() 
+{
 	//std::cout << "Deleting task" <<std::endl;
 }
 
-void Task::print_task() {
-	std::cout << "Task Period: " << this->period<< "\nTask Length: " << this->length <<std::endl;
+void Task::print_task()
+{
+	std::cout << "Task Period: " << m_period << "\nTask Length: " << this->m_execution_time << std::endl;
 }
 
-void Task::running() {
-	if (bytes_sent < length) {
-		(bytes_sent)++;
-		std::cout << "\n\nBytes sent: " << bytes_sent;
-		// Here 'return' or under line as 'else if'.
-		// If 'if(bytes_sent < length)' is true, you don't need to execute the under if-statement 
-		// return 
-	} else if (bytes_sent == length) {
-		bytes_sent = 0;
-		tvalid = false;
-		std::cout << "\nBytes sent. Resetting to bytes_sent to 0 and tvalid to false " << bytes_sent <<"\n";
-	}	
+void Task::run() 
+{
+	if (m_bytes_sent < m_execution_time) {
+		(m_bytes_sent)++;
+		std::cout << "\n\nBytes sent: " << m_bytes_sent;
+	}
+	else if (m_bytes_sent == m_execution_time) {
+		std::cout << "\n\nBytes sent " << m_bytes_sent << ". Resetting to bytes_sent to 0 and tvalid to false.\n";
+		m_bytes_sent = 0;
+		m_tvalid = false;
+	}
 }
 
-unsigned int Task::get_length() {
-	return this->length;
+unsigned int Task::get_length() 
+{
+	return m_execution_time;
 }
 
-unsigned int Task::get_period() {
-	return this->period;
+unsigned int Task::get_period() 
+{
+	return m_period;
 }
 
-int Task::get_bytes_sent() {
-	return this->bytes_sent;
+int Task::get_bytes_sent() 
+{
+	return m_bytes_sent;
 }
 
-// You use sometimes 'this->' and sometimes not. I recommend that you don't use 'this->', 
-// instead you can write the member variable like this to distinguish: m_tvaild
-bool Task::get_valid() {
-	return tvalid;
+bool Task::get_valid() 
+{
+	return m_tvalid;
 }
 
-// set function normaly give a paramter. i.e. void Task::set_valid(bool enable)
-void Task::set_valid() {
-	tvalid = true;
-}
-
-// It is just my style, I like to write the scope of function like this: 
 void Task::set_valid()
 {
-	tvalid = true;
+	m_tvalid = true;
 }

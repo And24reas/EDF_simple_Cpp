@@ -5,8 +5,8 @@ class Task
 public:
 	Task();
 	Task(unsigned int length, unsigned int period);
-	~Task();	// deconstruct should have allway virtual, I will explain later the reason. But remember!! Always!!
-	void running();	// run is more common
+	virtual ~Task();
+	void run();
 	unsigned int get_period();
 	unsigned int get_length();
 	int get_bytes_sent();
@@ -14,12 +14,12 @@ public:
 	bool get_valid();
 	void set_valid();
 private:
-	unsigned int period;
-	unsigned int length;		// What is length? You mean 'Execution Time'? then I recommend rename as 'm_exc_time'
-	unsigned int bytes_sent;
-	bool tlast;
-	bool tvalid;
-	bool tready;
+	unsigned int m_period;
+	unsigned int m_execution_time;
+	unsigned int m_bytes_sent;
+	bool m_tlast;
+	bool m_tvalid;
+	bool m_tready;
 };
 
 

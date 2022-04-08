@@ -34,7 +34,7 @@ void Task::run()
 		(m_bytes_sent)++;
 		std::cout << "\n\nBytes sent: " << m_bytes_sent;
 	}
-	else if (m_bytes_sent == m_execution_time) {
+	if (m_bytes_sent == m_execution_time) { //has to stay like this because _m_bytes_sent is incremented in the last if statement, so else if is not possible
 		std::cout << "\n\nBytes sent " << m_bytes_sent << ". Resetting to bytes_sent to 0 and tvalid to false.\n";
 		m_bytes_sent = 0;
 		m_tvalid = false;

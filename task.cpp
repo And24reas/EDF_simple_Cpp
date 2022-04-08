@@ -1,57 +1,67 @@
 #include "Task.h"
 
-Task::Task(unsigned int length, unsigned int period) {
-	this->period = period;
-	this->length = length;
-	this->bytes_sent = 0;
-	this->tlast = false;
-	this->tready = false;
-	this->tvalid = true;
+Task::Task(unsigned int length, unsigned int period) 
+{
+	m_period = period;
+	m_execution_time = length;
+	m_bytes_sent = 0;
+	m_tlast = false;
+	m_tready = false;
+	m_tvalid = true;
 }
-Task::Task() {
-	this->period = 0;
-	this->length = 0;
-	this->bytes_sent = 0;
-	this->tlast = false;
-	this->tready = false;
-	this->tvalid = true;
+Task::Task() 
+{
+	m_period = 0;
+	m_execution_time = 0;
+	m_bytes_sent = 0;
+	m_tlast = false;
+	m_tready = false;
+	m_tvalid = true;
 }
-Task::~Task() {
+Task::~Task() 
+{
 	//std::cout << "Deleting task" <<std::endl;
 }
 
-void Task::print_task() {
-	std::cout << "Task Period: " << this->period<< "\nTask Length: " << this->length <<std::endl;
+void Task::print_task()
+{
+	std::cout << "Task Period: " << m_period << "\nTask Length: " << this->m_execution_time << std::endl;
 }
 
-void Task::running() {
-	if (bytes_sent < length) {
-		(bytes_sent)++;
-		std::cout << "\n\nBytes sent: " << bytes_sent;
+void Task::run() 
+{
+	if (m_bytes_sent < m_execution_time) {
+		(m_bytes_sent)++;
+		std::cout << "\n\nBytes sent: " << m_bytes_sent;
 	}
-	if (bytes_sent == length) {
-		bytes_sent = 0;
-		tvalid = false;
-		std::cout << "\nBytes sent. Resetting to bytes_sent to 0 and tvalid to false " << bytes_sent <<"\n";
-	}	
+	if (m_bytes_sent == m_execution_time) { //has to stay like this because _m_bytes_sent is incremented in the last if statement, so else if is not possible
+		std::cout << "\n\nBytes sent " << m_bytes_sent << ". Resetting to bytes_sent to 0 and tvalid to false.\n";
+		m_bytes_sent = 0;
+		m_tvalid = false;
+	}
 }
 
-unsigned int Task::get_length() {
-	return this->length;
+const unsigned int Task::get_length() 
+{
+	return m_execution_time;
 }
 
-unsigned int Task::get_period() {
-	return this->period;
+const unsigned int Task::get_period() 
+{
+	return m_period;
 }
 
-int Task::get_bytes_sent() {
-	return this->bytes_sent;
+const int Task::get_bytes_sent() 
+{
+	return m_bytes_sent;
 }
 
-bool Task::get_valid() {
-	return tvalid;
+const bool Task::get_valid() 
+{
+	return m_tvalid;
 }
 
-void Task::set_valid() {
-	tvalid = true;
+void Task::set_valid()
+{
+	m_tvalid = true;
 }

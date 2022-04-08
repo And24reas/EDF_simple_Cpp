@@ -3,10 +3,12 @@ EDF_Scheduler::EDF_Scheduler() {}
 
 EDF_Scheduler::~EDF_Scheduler() {}
 
-Task* EDF_Scheduler::add_task(Task& task) 
-{ //now saves address instead of copying pointer
-	m_tasks[m_array_index] = &task;
-	m_deadlines[m_array_index] = m_tasks[m_array_index]->get_period(); // period == deadline at t0, since creating the tasks automatically sets tvalid to true
+Task* EDF_Scheduler::add_task(Task* task) 
+{ 
+	//now saves address instead of copying pointer
+	m_tasks[m_array_index] = task;
+	// [] it is also a operation, it means costs
+	m_deadlines[m_array_index] = task->get_period(); // period == deadline at t0, since creating the tasks automatically sets tvalid to true
 	m_array_index++;
 
 	return m_tasks[m_array_index - 1];
@@ -18,7 +20,6 @@ Task* EDF_Scheduler::find_earliest(unsigned int lcm)
 	int tmp_period = 0;
 	bool valid = false;
 	int earliest_deadline_index = 0;
-	int i = 0;
 	Task* to_return;
 	// all m_tasks are invalid
 	if (!(m_tasks[0]->get_valid() || m_tasks[1]->get_valid() || m_tasks[2]->get_valid())) {
@@ -27,13 +28,29 @@ Task* EDF_Scheduler::find_earliest(unsigned int lcm)
 
 	else
 	{
-		for (i = 0; i < g_n_tasks; i++) {
-			tmp_period = m_tasks[i]->get_period();
-			valid = m_tasks[i]->get_valid();
+		// for (i = 0; i < g_n_tasks; i++) {
+		// 	tmp_period = m_tasks[i]->get_period();
+		// 	valid = m_tasks[i]->get_valid();
+		// 	if ((tmp_period < earliest_deadline) && valid) {
+		// 		earliest_deadline = tmp_period;
+		// 		earliest_deadline_index = i;
+		// 	}
+		// }
+		
+		// Your code is not wrong. It is another type. I wanted to show you.
+		// Here is almost same performance, but if a count is big the under code is more efficient
+		// search "Displacement addressing"
+		// try to do this under code 'assign_Task'
+		Task* p_task = (Task*)m_tasks;
+		for(int i = 0; i < g_n_tasks; i++) {
+			tmp_period = p_task->get_period();
+			valid = p_task->get_valid();
+			
 			if ((tmp_period < earliest_deadline) && valid) {
-				earliest_deadline = tmp_period;
-				earliest_deadline_index = i;
-			}
+		 		earliest_deadline = tmp_period;
+		 		earliest_deadline_index = i;
+		 	}
+			p_task++;
 		}
 	}
 
@@ -85,7 +102,7 @@ void EDF_Scheduler::run_edf(unsigned int lcm)
 		to_print.print_task();
 	}
 }
-Task EDF_Scheduler::get_currently_assigned() 
+const Task EDF_Scheduler::get_currently_assigned() 
 {
 	return *m_tasks[m_currently_assigned];
 }

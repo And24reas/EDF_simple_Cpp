@@ -16,9 +16,9 @@ int main()
 	Task task2(2, 12);
 	Task task3(1, 4);
 	//initialize Tasks
-	edf.add_task(task1)->print_task();
-	edf.add_task(task2)->print_task();
-	edf.add_task(task3)->print_task();
+	edf.add_task(&task1)->print_task();
+	edf.add_task(&task2)->print_task();
+	edf.add_task(&task3)->print_task();
 
 	std::cout << std::endl;
 	std::cout << "Starting Execution..............." << std::endl;
@@ -28,6 +28,7 @@ int main()
 	return 0;
 }
 
+// You can replace the location of this function in the 'EDF_Scheduler' class
 int calc_lcm(int a, int b) 
 {
 	int lcm = 0;

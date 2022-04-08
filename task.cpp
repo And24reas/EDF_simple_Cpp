@@ -41,22 +41,22 @@ void Task::run()
 	}
 }
 
-unsigned int Task::get_length() 
+const unsigned int Task::get_length() 
 {
 	return m_execution_time;
 }
 
-unsigned int Task::get_period() 
+const unsigned int Task::get_period() 
 {
 	return m_period;
 }
 
-int Task::get_bytes_sent() 
+const int Task::get_bytes_sent() 
 {
 	return m_bytes_sent;
 }
 
-bool Task::get_valid() 
+const bool Task::get_valid() 
 {
 	return m_tvalid;
 }

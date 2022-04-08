@@ -3,6 +3,6 @@
 *.vcxproj.*
 .vs
 *.sln
-
+.vscode
 Debug
 Release
